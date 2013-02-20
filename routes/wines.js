@@ -4,7 +4,9 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
  
-var server = new Server('localhost', 27017, {auto_reconnect: true});
+const MONGO_URL = process.env.MONGOHQ_URL;
+
+var server = new Server(MONGO_URL, 27017, {auto_reconnect: true});
 db = new Db('winedb', server);
  
 db.open(function(err, db) {
